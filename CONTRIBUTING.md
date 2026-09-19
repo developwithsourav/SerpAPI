@@ -75,6 +75,36 @@ Someone other than the author reviews, approves and merges the PR. GitHub doesn'
 
 Merge with **Create a merge commit**. Squash merges are turned off because they fold every commit into one and lose who wrote what. Rebase merges are off too, so the commits on `main` are the same ones that were reviewed.
 
+## Reviewing without changing the branch
+
+Leave review points as comments. The author makes the change. That keeps each commit authored by the person who wrote it, and keeps the `Step:` line on every commit.
+
+Don't use GitHub's **Commit suggestion** or **Add suggestion to batch** buttons, even on a suggestion you wrote yourself. They commit straight to the author's branch, and a commit made in the browser has no `Step: #<number>` line, so `steps-guard` fails the PR.
+
+Comments from review bots work the same way. Read what they flag and comment in your own words on the ones worth fixing. Never click **Commit suggestion** on a bot's comment either: those commits also add a co-author line for the bot, and co-author lines are only for teammates.
+
+If one lands anyway, the author of the branch removes it. This is the one case where we rewrite a branch that's already pushed, and nobody does it to someone else's branch. A person runs these commands. Coding assistants are blocked from force-pushing.
+
+Start with a clean `git status`, run `git fetch origin`, and note two commit ids: the suggestion commit you're dropping (say `abc1234`) and the one just before it (say `9f8e7d6`).
+
+If your laptop never pulled the suggestion commit, push your branch as it is:
+
+```bash
+git push --force-with-lease=step/<NNN>-<slug>:abc1234 origin step/<NNN>-<slug>
+```
+
+If you pulled it and it's the newest commit, move back one commit first:
+
+```bash
+git switch step/<NNN>-<slug>
+git reset --hard 9f8e7d6
+git push --force-with-lease=step/<NNN>-<slug>:abc1234 origin step/<NNN>-<slug>
+```
+
+Naming the commit after `--force-with-lease` means the push only goes through if that commit is still the newest one on GitHub, so nobody else's work gets overwritten. If the suggestion commit is buried under newer commits, ask in the group chat before doing anything.
+
+If the change was worth keeping, redo it as an ordinary commit ending `Step: #<number>`, with a `Co-authored-by:` line for whoever suggested it.
+
 ## Reviews without blocking each other
 
 Five people and one required approval can still leave PRs waiting for days. What keeps them moving:
@@ -149,7 +179,9 @@ Say step #9 parsed the reviews and you want to rewrite that parser. Don't edit #
 ## What we never do
 
 - Push straight to `main`
-- Force-push, or amend or rebase commits that are already pushed
+- Force-push, or amend or rebase commits that are already pushed, except to drop a suggestion commit from our own branch
+- Commit a review suggestion to someone's branch from the GitHub UI
+- Accept a bot's suggestion commit, or add a co-author line for anyone outside the team
 - Merge our own PRs, or approve them
 - Edit, rename or delete another step's record
 - Clean up code that belongs to another step as a side job

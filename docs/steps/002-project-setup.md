@@ -14,6 +14,7 @@
 - Wrote the daily git commands, the review buddy circle and the Rulesets settings into `CONTRIBUTING.md`.
 - Added `AGENTS.md` and the files that point to it, so every tool reads the same project rules.
 - Added `.gitignore` and `.env.example`, and replaced the placeholder README.
+- Added rules for review suggestions to `CONTRIBUTING.md`, worded by Sourav. A commit made with GitHub's Commit suggestion button had failed `steps-guard`, so it was dropped from this branch, and the rules now say how to avoid and undo that.
 
 ## Changes to earlier steps
 
@@ -22,6 +23,8 @@ None. Step #1 was a test PR on the README and was closed without merging.
 ## Decisions
 
 See `docs/changes.md` and the decisions in `docs/architecture.md`, all dated 2026-09-20.
+
+- CI keeps `uv sync --locked`. An unlocked sync would resolve fresh versions in CI, so it would test a different set of dependencies than anyone's laptop.
 
 ## Known weaknesses
 

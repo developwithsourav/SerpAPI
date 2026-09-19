@@ -13,3 +13,4 @@ Project-level decisions and the reasons behind them. Step-level detail lives in 
 - Considered a TypeScript tools package again and stayed with Python and Streamlit.
 - Step numbers follow GitHub issue numbers. #1 was a closed test PR, so project setup is step #2.
 - Branch names and step records pad the number to three digits (`step/002-project-setup`, `docs/steps/002-project-setup.md`) so they sort in order and work like ticket numbers. Numbers still come from GitHub issues, never picked by hand, so two people can't take the same one. Work gets handed out by creating and assigning issues in advance.
+- Review suggestions are left as comments and never committed from the browser. If a suggestion commit lands anyway, the branch's author drops it. That's the one exception to not rewriting pushed commits.
