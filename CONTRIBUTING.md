@@ -153,7 +153,7 @@ Say step #9 parsed the reviews and you want to rewrite that parser. Don't edit #
 - Merge our own PRs, or approve them
 - Edit, rename or delete another step's record
 - Clean up code that belongs to another step as a side job
-- Commit `.env`, API keys, the `cache/` folder, or personal data of any kind
+- Commit `.env`, API keys, the `cache/` folder, phone numbers, emails, or the names and profiles of reviewers and other people outside the team
 
 ## The PR checks
 

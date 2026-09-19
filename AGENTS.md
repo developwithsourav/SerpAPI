@@ -8,7 +8,7 @@ IPO Lens builds an evidence brief for upcoming Indian IPOs from live search data
 
 - Deadline: 5 Oct 2026, 23:59 IST. Needs a public repo with setup instructions and a demo under 3 minutes of the project running locally.
 - SerpApi must do real work in the product. No token or cosmetic calls.
-- No API keys, credentials or personal data in anything committed, pushed, logged or recorded. A leak disqualifies the team.
+- No API keys, credentials or private personal information in anything committed, pushed, logged or recorded. That means no phone numbers or emails, and no names, avatars or profile links of reviewers or anyone else outside the team. Team members' first names in the README are fine. A leak can disqualify the team.
 - No copied code without a compatible licence and attribution.
 - The product describes evidence. It never tells anyone to buy, sell, subscribe to or avoid an IPO, and never claims to predict listing performance.
 
