@@ -1,0 +1,46 @@
+name: ci
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  lint-and-test:
+    name: lint-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      # The Python project arrives with the project skeleton step. Until then this job passes without doing anything.
+      - name: Check for the Python project
+        id: project
+        run: |
+          if [ -f pyproject.toml ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "No pyproject.toml yet, skipping lint and tests."
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: astral-sh/setup-uv@v6
+        if: steps.project.outputs.exists == 'true'
+
+      - name: Install dependencies
+        if: steps.project.outputs.exists == 'true'
+        run: uv sync --locked
+
+      - name: Lint
+        if: steps.project.outputs.exists == 'true'
+        run: uv run ruff check
+
+      - name: Check formatting
+        if: steps.project.outputs.exists == 'true'
+        run: uv run ruff format --check
+
+      # Tests run on recorded responses in tests/fixtures/, so no SerpApi key is needed here.
+      - name: Test
+        if: steps.project.outputs.exists == 'true'
+        run: uv run pytest

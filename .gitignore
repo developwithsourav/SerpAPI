@@ -1,0 +1,31 @@
+# Secrets
+.env
+.env.local
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# SerpApi response cache. Raw responses can hold personal data;
+# scrubbed copies for tests go in tests/fixtures/.
+cache/
+
+# Local-only notes
+docs/research/
+docs/handoffs/
+
+# Local tool data
+.claude/settings.local.json
+.code-review-graph/
+
+# OS and editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
