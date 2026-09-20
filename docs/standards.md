@@ -58,7 +58,7 @@ Ruff does both, configured in `pyproject.toml` once the project skeleton step cr
 - Branch as `step/<NNN>-<short-slug>` from the latest `main`. `NNN` is the issue number padded to three digits, so issue #7 is `step/007-trends-adapter`.
 - Commit subject: imperative, under 72 characters, no trailing period. The body explains why, when that isn't obvious.
 - The last line of every commit is `Step: #<id>`.
-- Co-author lines are only for teammates who worked on the commit. No other trailers or footers.
+- Co-author lines are only for teammates who worked on the commit. A bot or an AI tool is never a co-author. No other trailers or footers.
 - To update a branch, merge `main` into it. Don't rebase commits you've pushed.
 - PRs merge with a merge commit, after approval from a teammate who isn't the author. No squash or rebase merges.
 - Commit these: `docs/brief.md`, the other docs, and step records. Keep these local (gitignored): `docs/research/`, `docs/handoffs/`, `cache/`, `.env`.
