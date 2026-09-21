@@ -26,6 +26,10 @@ Adapted from [webpro/programming-principles](https://github.com/webpro/programmi
 - All SerpApi calls go through `src/ipolens/serp/client.py`. Nothing else imports `serpapi`.
 - One adapter per engine in `src/ipolens/sources/`. Every result carries its source, its query parameters (without the key) and its fetch time.
 - Signals from different sources are never averaged or merged into one number. Show them side by side.
+- Every company gets the same fixed set of comparisons, and the brief shows each one even when nothing differs.
+- A comparison sets like against like: Maps against Maps, Play Store against Play Store.
+- Comparison wording is neutral: "differs from", "higher than", "lower than". Never "misleading", "false", "red flag" or other words that claim to know intent.
+- Every entry in a claims file links to where the company said it. Peers follow the rule in `docs/architecture.md`.
 - Every signal documents its method in a docstring and in the UI: what was counted, over what window, and what it can't tell you.
 - Treat every field in a SerpApi response as optional. Missing data shows as "not available", never as zero.
 - The product describes evidence. No wording that recommends buying, selling, subscribing or avoiding, and no predictions.

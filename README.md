@@ -6,7 +6,7 @@
 ![Status: in development](https://img.shields.io/badge/status-in%20development-orange)
 ![SerpApi India Hackathon 2026](https://img.shields.io/badge/SerpApi%20India%20Hackathon-2026-1f6feb)
 
-A prospectus tells you what a company says about itself. When a consumer brand in India goes public, most retail investors have that and a few headlines to go on. IPO Lens pulls in what everyone else is saying: how customers rate the app, where in India people search for the brand, whether the company is hiring, how its stores are reviewed, and what the press is reporting. Each signal stays separate, with its source, its method and the time it was fetched. The app makes no recommendation about whether to apply.
+A prospectus tells you what a company says about itself. When a consumer brand in India goes public, most retail investors have that and a few headlines to go on. IPO Lens pulls in what everyone else is saying: how customers rate the app, where in India people search for the brand, whether the company is hiring, how its stores are reviewed, and what the press is reporting. Each signal stays separate, with its source, its method and the time it was fetched. It also puts numbers side by side: the rating at the top of a Play Store page next to the ratings in the latest reviews, or the company's store ratings next to those of listed companies in the same business. The app makes no recommendation about whether to apply.
 
 ## What it shows
 
@@ -29,20 +29,23 @@ All of it comes from [SerpApi](https://serpapi.com). The app fetches fresh resul
 %% palette 97d170e1
 flowchart TB
   Q([Company name]) --> S[Source adapters<br/>Play Store, App Store,<br/>Trends, Jobs, Maps,<br/>News, Finance]
+  CL[Claims file<br/>stated numbers and peers,<br/>each with a link] -. peers .-> S
   S <--> C[SerpApi client<br/>key, cache, credit budget]
   C <--> API[(SerpApi)]
   S --> G[Signals<br/>source, method, fetch time]
-  G --> B[Evidence brief]
+  G --> X[Comparisons<br/>same set for every company]
+  CL --> X
+  X --> B[Evidence brief]
   B --> U[Streamlit app]
   B -. optional .-> W[Written summary<br/>citing each signal]
   classDef role3 fill:#F4E6DA,stroke:#BC641A,color:#0B0B0B
   classDef role1 fill:#E3E1FB,stroke:#4F46E5,color:#0B0B0B
   classDef role2 fill:#FBE1F4,stroke:#E546BC,color:#0B0B0B
   classDef role4 fill:#E3F4DA,stroke:#52BC1A,color:#0B0B0B
-  class Q role3
+  class Q,CL role3
   class S role1
   class C,API role2
-  class G,B,U,W role4
+  class G,X,B,U,W role4
 ```
 
 Each source has its own adapter. An adapter asks one SerpApi engine one kind of question and returns typed results labelled with where they came from.
@@ -51,13 +54,16 @@ Only the client module talks to SerpApi. It holds the key, saves every response 
 
 Signals stay separate. A Play Store rating and a Google Maps rating come from different people rating different things, so the app shows them next to each other with the method behind each and never averages them.
 
+Comparisons come after the signals. Each demo company has a short hand-written claims file with the numbers it states about itself and the listed peers named in its offer document, each with a link. Every company gets the same comparisons and all of them are shown. A measure is only compared with the same measure, and the wording says where two numbers differ without calling either one misleading.
+
 The written summary is optional. With an LLM key, the app adds a short summary that cites the signals it uses. Without one, you still get the full brief.
 
 ## What it doesn't do
 
 - Tell you to buy, sell, subscribe to or skip an IPO
 - Predict listing gains, prices or the grey market premium
-- Use data from anywhere except SerpApi
+- Call a claim misleading. It shows where the claim and the evidence differ and leaves the judgement to you
+- Fetch data from anywhere except SerpApi. The one other input is a short hand-written list of each demo company's public claims, each linked to its source
 
 ## Status
 

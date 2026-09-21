@@ -11,6 +11,7 @@ This is a plan. Nothing is built yet. The project skeleton step creates it, and 
 | SerpApi access | the official `serpapi` package, wrapped by our client module | The key, cache, credit budget and errors are handled in one place |
 | Cache | JSON files on disk, one per request | The simplest option that works. Scrubbed copies double as test fixtures |
 | Data models | Pydantic | Each source returns typed results that record where they came from |
+| Claims files | TOML, read with the standard library's `tomllib` | Easy to write by hand, and adds no dependency |
 | UI | Streamlit | The fastest way to a screen we can demo |
 | Written summary (optional) | Pydantic AI, with Gemini's free tier by default | The app has to work for someone who has no LLM key |
 | Lint and format | Ruff | One tool for both |
@@ -24,20 +25,23 @@ This is a plan. Nothing is built yet. The project skeleton step creates it, and 
 %% palette 97d170e1
 flowchart TB
   Q([Company name]) --> S[Source adapters<br/>Play Store, App Store,<br/>Trends, Jobs, Maps,<br/>News, Finance]
+  CL[Claims file<br/>stated numbers and peers,<br/>each with a link] -. peers .-> S
   S <--> C[SerpApi client<br/>key, cache, credit budget]
   C <--> API[(SerpApi)]
   S --> G[Signals<br/>source, method, fetch time]
-  G --> B[Evidence brief]
+  G --> X[Comparisons<br/>same set for every company]
+  CL --> X
+  X --> B[Evidence brief]
   B --> U[Streamlit app]
   B -. optional .-> W[Written summary<br/>citing each signal]
   classDef role3 fill:#F4E6DA,stroke:#BC641A,color:#0B0B0B
   classDef role1 fill:#E3E1FB,stroke:#4F46E5,color:#0B0B0B
   classDef role2 fill:#FBE1F4,stroke:#E546BC,color:#0B0B0B
   classDef role4 fill:#E3F4DA,stroke:#52BC1A,color:#0B0B0B
-  class Q role3
+  class Q,CL role3
   class S role1
   class C,API role2
-  class G,B,U,W role4
+  class G,X,B,U,W role4
 ```
 
 ```
@@ -45,8 +49,10 @@ src/ipolens/
   serp/client.py   the only module that calls SerpApi: key, cache, budget, errors
   sources/         one adapter per engine, each returning a typed result
   signals/         turns source results into signals, each with a documented method
+  compare/         the fixed comparisons: signals against claims, and against peers
   brief/           puts the brief together, plus the optional written summary
   app.py           Streamlit UI
+claims/            one hand-written TOML file per demo company: stated numbers and peers, each linked
 tests/
   fixtures/        recorded SerpApi responses with personal data removed
 cache/             local response cache, gitignored
@@ -74,6 +80,18 @@ We ran Zepto, Lenskart and boAt through every source with India settings (`gl=in
 - Maps picks up lookalikes. A search for "boAt store" also returned resellers and "Hector Beverages (Paperboat)". Outlets have to match the brand name, and the app lists every outlet it counted by name.
 - Finance works with NSE tickers such as `NYKAA:NSE`, financials included.
 - A full brief for one company should cost roughly 15 searches, so one free account covers about a dozen companies a month. The cache is not optional.
+
+## Comparisons
+
+The brief sets what a company says about itself against what the sources show, and sets the company against listed peers.
+
+What the company says comes from two places. One is the headline numbers SerpApi returns, such as the rating at the top of a Play Store listing. The other is `claims/<company>.toml`, a short file we write by hand for each demo company. It holds the numbers the company states in its offer documents, website and press releases, each with a link to where it said so. A company without a claims file still gets a brief, compared on headline numbers and peers only, and the UI says it has no claims file.
+
+Every company gets the same fixed set of comparisons, and the brief shows all of them, including the ones where nothing differs. A comparison only sets like against like: a Maps rating against Maps ratings, a Play Store rating against Play Store ratings. The wording stays neutral. One number "differs from" or is "higher than" another, and nothing is called misleading or false. The set itself gets settled in its own step and listed here before the comparison code starts.
+
+Peers follow one rule. They are the listed companies the company names in the Basis for Offer Price section of its DRHP or RHP, copied into its claims file with a link. If the filing names none, we pick up to three NSE-listed companies in the same line of business and write the reason for each next to it.
+
+Peers roughly triple the searches a brief needs, from about 15 to about 45. One free account then covers five or six companies a month, so the cache carries more of the load.
 
 ## Decisions
 
@@ -118,3 +136,21 @@ We ran Zepto, Lenskart and boAt through every source with India settings (`gl=in
 **Chose:** one issue, branch, PR and frozen record per piece of work. PRs merge with merge commits after a teammate approves.
 **Because:** it keeps a clear record of who did what, and earlier work gets improved in new steps instead of being overwritten.
 **Rejected:** squash merging, which folds several commits into one and loses who wrote what. Also rejected: a shared progress table, which five people would keep hitting merge conflicts in.
+
+### 2026-09-22: Build the brief from comparisons
+
+**Chose:** compare what a company says about itself, and the headline numbers shown for it, against the evidence and against listed peers, using the same set of comparisons for every company and showing all of them.
+**Because:** seven signals side by side leave the reader to work out which ones matter. A comparison gives each number a reference point without telling anyone what to do. The 2026-09-20 data check already turned one up: Zepto showed 4.6 on the Play Store while 16 of its newest 40 reviews there were one star.
+**Rejected:** showing only the comparisons where something differs, which would read as looking for problems. Also words like "misleading" or "red flag", which claim to know intent the data can't show.
+
+### 2026-09-22: Claims in a hand-written file
+
+**Chose:** one TOML file per demo company with its stated numbers and listed peers, every entry linked to its source.
+**Because:** a company's claims sit in its offer documents and press, which SerpApi doesn't return as numbers we can compare. A short linked file shows exactly where each number came from, and Python's standard library reads TOML, so it adds no dependency.
+**Rejected:** scraping the offer document or the company's website. The project fetches nothing outside SerpApi, and a scraper would be a second pipeline to build and test.
+
+### 2026-09-22: Peers by a stated rule
+
+**Chose:** the listed peers a company names in the Basis for Offer Price section of its DRHP or RHP, falling back to up to three NSE-listed companies in the same business, each with a written reason.
+**Because:** with a stated rule, nobody picked the peers to make a company look better or worse, and the company's own filing is the hardest source to argue with.
+**Rejected:** picking peers by hand with no rule.

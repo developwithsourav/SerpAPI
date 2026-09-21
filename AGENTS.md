@@ -56,6 +56,7 @@ A step is one issue, one branch, one PR and one record: `docs/steps/<NNN>-<slug>
 - Commit anything from `.env`, `cache/`, `docs/research/` or `docs/handoffs/`.
 - Quote, cite or mention `docs/research/` in committed files, commits or PRs.
 - Credit a bot or an AI tool as a co-author, contributor or reviewer, anywhere in the repository or its pull requests.
+- Scrape a website or fetch data from anywhere except SerpApi. Files in `claims/` are written by hand.
 
 ## Code
 
@@ -64,6 +65,7 @@ A step is one issue, one branch, one PR and one record: `docs/steps/<NNN>-<slug>
 - Do the simplest thing that works. No speculative abstractions, no options nobody asked for.
 - All SerpApi calls go through `src/ipolens/serp/client.py` once it exists. Nothing else imports `serpapi`.
 - One adapter per engine in `src/ipolens/sources/`. Every result keeps its source label. Never average or merge signals across sources.
+- Comparisons are the same fixed set for every company, like against like, and all are shown. Say "differs from", never "misleading".
 - Every signal documents its method in code and in the UI.
 - Tests run on recorded, scrubbed responses in `tests/fixtures/`.
 - Before asking for review: `uv run ruff check`, `uv run ruff format --check`, `uv run pytest`.
