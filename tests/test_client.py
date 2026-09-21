@@ -102,7 +102,7 @@ def test_http_error_hides_url_and_key(monkeypatch, tmp_path):
     assert "SECRET-KEY" not in str(caught.value)
     assert "http" not in str(caught.value).lower().replace("http 401", "")
     assert "Invalid API key." in str(caught.value)
-    assert caught.value.__suppress_context__ is True
+    assert caught.value.__context__ is None and caught.value.__cause__ is None
 
 
 def test_connection_error_hides_url_and_key(monkeypatch, tmp_path):
@@ -116,7 +116,7 @@ def test_connection_error_hides_url_and_key(monkeypatch, tmp_path):
         client.search("google", {"q": "OYO"})
 
     assert "SECRET-KEY" not in str(caught.value)
-    assert caught.value.__suppress_context__ is True
+    assert caught.value.__context__ is None and caught.value.__cause__ is None
 
 
 def test_missing_key_explains_what_to_do(monkeypatch, tmp_path):

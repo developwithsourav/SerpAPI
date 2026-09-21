@@ -18,7 +18,7 @@ None to code. `SourceResult` differs from the shape first sketched for the team:
 
 ## Decisions
 
-- Errors raised by the `serpapi` package include the request URL, and the URL includes the API key. The client re-raises them as `SerpError` with only the HTTP status and SerpApi's own message, and drops the original error so a traceback can't show it.
+- Errors raised by the `serpapi` package include the request URL, and the URL includes the API key. The client raises its own `SerpError` with only the HTTP status and SerpApi's own message, and raises it outside the `except` block, so the new error keeps no link to the original and no traceback can show it.
 - The `serpapi` package writes `api_key` into the dict it's given. The client passes it a copy and never stores that copy.
 - `.env` is read by a few lines in the client instead of `python-dotenv`, which would have been a fifth dependency.
 - Fixtures keep ratings, dates and likes, and leave out review text and the text of developer replies. Both can name people.
@@ -30,6 +30,8 @@ None to code. `SourceResult` differs from the shape first sketched for the team:
 - The newest 199 reviews covered about one day for OYO and five weeks for Atomberg, so the window varies a lot from company to company. Every method text states the window it used.
 - The adapter picks the first app whose title contains the company name. That was right for OYO and Atomberg, but a brand named after a common word could match the wrong app. The note on each result says which app matched.
 - A Windows terminal can't print ★ unless `PYTHONIOENCODING=utf-8` is set, so printing the star split there fails. The app screen isn't affected.
+- If anyone turns on DEBUG logging, `urllib3`, which `serpapi` uses underneath, logs full request URLs, key included. Leave logging at its default level.
+- `cache/` keeps raw answers, reviewer names included. Anything built from it that gets committed, such as the demo snapshot, has to go through `scrub` first.
 
 ## Follow-ups
 

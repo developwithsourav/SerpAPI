@@ -110,15 +110,16 @@ class SerpClient:
 
     def _call_serpapi(self, query: dict[str, str]) -> dict[str, Any]:
         key = self._api_key or _read_key()
+        # The original error's message includes the request URL, and the URL includes the key.
+        # Keep only its status and SerpApi's own message, and raise outside the except block so
+        # the new error holds no reference to the original at all.
         try:
             return serpapi.Client(api_key=key, timeout=60).search(query).as_dict()
         except serpapi.HTTPError as err:
-            # "from None" drops the original error, whose message includes the URL and the key.
-            raise SerpError(
-                f"SerpApi returned HTTP {err.status_code}: {err.error or 'no details'}"
-            ) from None
+            failure = f"SerpApi returned HTTP {err.status_code}: {err.error or 'no details'}"
         except Exception as err:
-            raise SerpError(f"Could not reach SerpApi ({type(err).__name__})") from None
+            failure = f"Could not reach SerpApi ({type(err).__name__})"
+        raise SerpError(failure)
 
 
 def _read_key() -> str:
