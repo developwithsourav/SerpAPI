@@ -1,7 +1,7 @@
 # Brief
 
 **Source:** https://serpapi.github.io/serpapi-india-hackathon-2026/ and its Rules, Terms & Conditions and submission pages
-**Retrieved:** 2026-09-19
+**Retrieved:** 2026-09-19, and re-read against the live pages on 2026-09-21. The re-read found nothing wrong and added a few details.
 **Type:** Hackathon
 
 This file records what the organisers asked for and nothing else. Our reading of it is in `overview.md`. If the Rules and the Terms disagree, the Terms apply (Rules, section 9).
@@ -34,6 +34,9 @@ This file records what the organisers asked for and nothing else. Our reading of
 - No false eligibility, authorship, team, community or functionality claims. No manipulating submission, repository, community or judging signals.
 - Drafts are never submitted automatically. Someone has to select "Submit project" before the deadline.
 - One account can hold at most three active projects, drafts included.
+- SerpApi employees, contractors, their affiliates and their immediate family or household are not eligible for awards.
+- Winners may be asked for identity, age, residency, tax and payment information before an award is paid.
+- An open-source licence for our own code is encouraged but not required (Rules, section 3; Terms, section 4).
 - Unfinished, spam, copied, inaccessible or materially non-functional entries may be rejected.
 
 ## Tracks
@@ -95,7 +98,7 @@ All times are IST.
 
 ## Submission form fields
 
-- Lead participant: name, email, mobile number, occupation, years of experience
+- Lead participant: name, email, mobile number, occupation (a dropdown: Student or Working professional), years of experience (enter 0 if none). Occupation and experience are for SerpApi's internal analytics only.
 - Project name, track, public repository URL, demo video URL
 - Project description, and how the project uses SerpApi
 - AI tools used
@@ -103,16 +106,21 @@ All times are IST.
 - How the team heard about the hackathon
 - Whether the project existed before the hackathon
 - Confirmation that the links open in a private window, and acceptance of the Rules and Terms
+- A draft cannot be saved without a project name, a description and a community source
+
+## Submission mechanics
+
+- The website records the time a project is first submitted. Editing it afterwards doesn't reset that time.
 
 ## Requirements checklist
 
 Tick these off as they are met.
 
-- [ ] The repository is public and opens without signing in
+- [x] The repository is public and opens without signing in (confirmed 2026-09-21)
 - [ ] The README's setup and usage instructions work on a clean machine
 - [ ] SerpApi does real work in the core feature
 - [ ] The SerpApi usage explanation for the form is written
-- [ ] No keys, credentials or personal data anywhere in the repo or its history
+- [x] No keys, credentials or personal data anywhere in the repo or its history (every reachable commit and all tracked files scanned 2026-09-21)
 - [ ] The demo video is under 3 minutes, recorded running locally, and opens in a private window
 - [ ] The project description is written
 - [ ] Track selected: Commerce & Market Intelligence
@@ -125,9 +133,13 @@ Tick these off as they are met.
 
 - "Meaningful" SerpApi usage has no threshold beyond the wording above.
 - The brief doesn't say whether judges will run the project or rely on the demo. Setup has to work with a judge's own SerpApi key either way.
-- The free plan gives 250 searches a month per account. The brief doesn't mention extra credits during the event.
+- The Rules call a community source a required field for saving a draft, while the form marks it optional. None of us belongs to a partner community.
 - Judging and winner dates haven't been announced.
 
 ## Worth knowing
 
 Submitting gives SerpApi a perpetual licence to use the project, screenshots, demo excerpts, team names, and the voices and likenesses in the demo, for hackathon promotion. The team keeps ownership (Terms, section 4).
+
+A free account gives 250 searches a month.
+
+The Terms are governed by Texas law. Disputes go to good-faith negotiation and then binding arbitration or small claims, and India's mandatory protections still apply (Terms, section 10). SerpApi's total liability to a participant is capped at the value of the competitive award actually received (Terms, section 9).

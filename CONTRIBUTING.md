@@ -103,7 +103,7 @@ git push --force-with-lease=step/<NNN>-<slug>:abc1234 origin step/<NNN>-<slug>
 
 Naming the commit after `--force-with-lease` means the push only goes through if that commit is still the newest one on GitHub, so nobody else's work gets overwritten. If the suggestion commit is buried under newer commits, ask in the group chat before doing anything.
 
-If the change was worth keeping, redo it as an ordinary commit ending `Step: #<number>`, with a `Co-authored-by:` line for whoever suggested it.
+If the change was worth keeping, redo it as an ordinary commit ending `Step: #<number>`. Credit a teammate who suggested it with a `Co-authored-by:` line or by name in the commit body. Only teammates get credited.
 
 ## Reviews without blocking each other
 
@@ -181,7 +181,7 @@ Say step #9 parsed the reviews and you want to rewrite that parser. Don't edit #
 - Push straight to `main`
 - Force-push, or amend or rebase commits that are already pushed, except to drop a suggestion commit from our own branch
 - Commit a review suggestion to someone's branch from the GitHub UI
-- Accept a bot's suggestion commit, or add a co-author line for anyone outside the team
+- Accept a bot's suggestion commit, or credit anyone outside the team as a co-author, contributor or reviewer
 - Merge our own PRs, or approve them
 - Edit, rename or delete another step's record
 - Clean up code that belongs to another step as a side job
