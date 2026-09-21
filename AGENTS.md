@@ -33,7 +33,7 @@ A step is one issue, one branch, one PR and one record: `docs/steps/<NNN>-<slug>
 
 - The last line of every commit message is the trailer `Step: #<id>`.
 - Subject: imperative, under 72 characters, no trailing period.
-- A commit message is a subject, an optional body and the `Step:` trailer. Add no other trailers, footers or sign-offs unless your human asks for a co-author line naming a teammate. A bot or an AI tool is never a co-author.
+- A commit message is a subject, an optional body and the `Step:` trailer. Add no other trailers, footers or sign-offs unless your human asks for a co-author line naming a teammate.
 - PR titles describe the change. PR bodies follow the template and add nothing after it.
 - The commit author is the human you work for. Never change the git identity.
 
@@ -55,7 +55,7 @@ A step is one issue, one branch, one PR and one record: `docs/steps/<NNN>-<slug>
 - Call the live SerpApi from tests.
 - Commit anything from `.env`, `cache/`, `docs/research/` or `docs/handoffs/`.
 - Quote, cite or mention `docs/research/` in committed files, commits or PRs.
-- Credit a bot or an AI tool as a co-author, contributor or reviewer, anywhere in the repository or its pull requests.
+- Credit anyone outside the team as a co-author, contributor or reviewer, anywhere in the repository or its pull requests.
 - Scrape a website or fetch data from anywhere except SerpApi. Files in `claims/` are written by hand.
 
 ## Code
