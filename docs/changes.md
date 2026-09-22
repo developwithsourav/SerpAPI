@@ -36,7 +36,7 @@ Project-level decisions and the reasons behind them. Step-level detail lives in 
 
 ## 2026-09-23
 
-- Manish has left the team, so there are four of us: Sourav, Avi, Anay and Divyansh. The work plan hands his parts to the other four, and the review circle is now Divyansh → Sourav → Avi → Anay → Divyansh.
+- Manish has left the team, so there are four of us: Sourav, Avi, Anay and Divyansh. His parts get handed to the other four, and the split goes into the work plan when it's added to the repository. The review circle is now Divyansh → Sourav → Avi → Anay → Divyansh.
 - The submission form lists only people who contributed to the project. The Rules require that of every listed member, and a false team claim is grounds for disqualification.
 - Four free SerpApi accounts give 1,000 searches a month instead of 1,250.
 - Step #5 merged, so the skeleton is on `main` and the adapters can start. Every adapter copies `play_store.py`.
