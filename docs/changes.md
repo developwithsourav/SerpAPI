@@ -33,3 +33,13 @@ Project-level decisions and the reasons behind them. Step-level detail lives in 
 - Peers roughly triple the searches per brief, from about 15 to about 45, so the cache carries more of the load.
 - Divyansh takes the project skeleton, with the Play Store adapter as the reference the others copy. Sourav reviews that PR, and Divyansh reviews #4.
 - boAt's data gets captured before its IPO is expected to open on 27 Sep. Every signal shows when it was fetched, so a demo run from the cache still states the date of its data.
+
+## 2026-09-23
+
+- Manish has left the team, so there are four of us: Sourav, Avi, Anay and Divyansh. His parts get handed to the other four, and the split goes into the work plan when it's added to the repository. The review circle is now Divyansh → Sourav → Avi → Anay → Divyansh.
+- The submission form lists only people who contributed to the project. The Rules require that of every listed member, and a false team claim is grounds for disqualification.
+- Four free SerpApi accounts give 1,000 searches a month instead of 1,250.
+- Step #5 merged, so the skeleton is on `main` and the adapters can start. Every adapter copies `play_store.py`.
+- Three decisions from the review of #5 shape every adapter. Signals carry a stable `key`, because their names include a review count that differs between companies, and comparisons need something fixed to match on. An app can be pinned by its `product_id`, which the claims files hold, because a whole-word name match still can't tell boAt from another app with "Boat" in its title. The scrubber masks phone numbers and emails even in text that holds a link, because the fixtures and the demo snapshot are public.
+- `.python-version` pins 3.12, the version CI runs, and `.gitattributes` stores text files with LF endings. `docs/architecture.md` still has CRLF from #2 and gets renormalised when it's next edited.
+- On 22 Sep the `main` ruleset turned out to require linear history, which rejects merge commits and had blocked #4. It now allows merge commits only, requires `steps-guard` and `lint-and-test`, dismisses stale approvals and asks for approval of the latest push.

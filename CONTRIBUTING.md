@@ -1,6 +1,6 @@
 # Contributing to IPO Lens
 
-Five of us are building this over two weeks, often on different parts at once. This file explains how we track who is doing what and keep anyone's work from being overwritten.
+Four of us are building this over two weeks, often on different parts at once. This file explains how we track who is doing what and keep anyone's work from being overwritten.
 
 ## The short version
 
@@ -107,9 +107,9 @@ If the change was worth keeping, redo it as an ordinary commit ending `Step: #<n
 
 ## Reviews without blocking each other
 
-Five people and one required approval can still leave PRs waiting for days. What keeps them moving:
+Four people and one required approval can still leave PRs waiting for days. What keeps them moving:
 
-- **Review buddies.** Each person's PRs go to the next person in the circle first: Divyansh → Sourav → Avi → Anay → Manish → Divyansh. If your buddy hasn't picked it up within 6 hours, anyone else can.
+- **Review buddies.** Each person's PRs go to the next person in the circle first: Divyansh → Sourav → Avi → Anay → Divyansh. If your buddy hasn't picked it up within 6 hours, anyone else can.
 - **Post the link.** When a PR is ready, drop it in the group chat with one line on what it does.
 - **Keep PRs small.** One step should take 10 to 15 minutes to review. If yours is much bigger, split the step.
 - **Review twice a day.** Check your queue once around lunch and once in the evening, before starting new work.
@@ -243,4 +243,4 @@ For the repo owner. Set these once.
 - Push protection: on
 
 **Settings → Collaborators**
-- All five of us with write access
+- All four of us with write access

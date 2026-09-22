@@ -113,6 +113,6 @@ flowchart LR
 
 ## Team
 
-Sourav · Avi · Anay · Manish · Divyansh
+Sourav · Avi · Anay · Divyansh
 
 Built for the [SerpApi India Hackathon 2026](https://serpapi.github.io/serpapi-india-hackathon-2026/), Commerce & Market Intelligence track.
