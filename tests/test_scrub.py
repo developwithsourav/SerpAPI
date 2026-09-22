@@ -41,6 +41,12 @@ def test_masks_emails_and_indian_phone_numbers_in_text():
     assert cleaned == {"snippet": "Call me on [phone] or [phone], or mail [email]"}
 
 
+def test_masks_the_usual_ways_of_writing_a_number():
+    data = {"a": "+91-9876543210", "b": "Mob.9876543210", "c": "Ring 98765-43210 anytime"}
+
+    assert scrub(data) == {"a": "[phone]", "b": "Mob.[phone]", "c": "Ring [phone] anytime"}
+
+
 def test_leaves_ordinary_numbers_alone():
     data = {"rating": 4.5, "reviews": 2000000, "product_id": "1575323645", "date": "2026-09-20"}
 

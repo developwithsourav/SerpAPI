@@ -16,14 +16,14 @@
 
 - `Signal` now has a stable `key`, such as `play_store.one_star_share`, and keeps `name` for the screen. Names carry the review count ("newest 40" for OYO, "newest 199" for Atomberg), so comparisons would have been matching on text that shifts between companies.
 - The app name now has to match as a whole word, so "OYO" no longer matches "Toyota Connect". A word match can't fix a name that is an ordinary word, so `fetch()` takes an optional `product_id` that pins the app, and a claims file can hold it. The result also lists the other apps whose titles hold the name: Atomberg has nine.
-- The phone mask leaves strings that are only digits alone, so an App Store id such as `6446901002` survives. Fixing it now, before the App Store adapter records its fixture. The first attempt skipped any string holding a link, which would have left phone numbers and emails in every sentence that ends with a link, and the demo snapshot runs through this code. Sourav caught it. The lookbehind is what protects ids inside links, and a test now covers text with a link in it.
+- The phone mask leaves strings that are only digits alone, so an App Store id such as `6446901002` survives. Fixing it now, before the App Store adapter records its fixture. The first attempt skipped any string holding a link, which would have left phone numbers and emails in every sentence that ends with a link, and the demo snapshot runs through this code. Sourav caught it. The lookbehind is what protects ids inside links, and a test now covers text with a link in it. It stops at word characters, slashes and equals signs only, so numbers written as `+91-9876543210` or `Mob.9876543210` are masked, which Sourav also caught.
 - A pinned `product_id` the search didn't return says so in the note, instead of reading `Matched the app "None"`.
 - `.gitattributes` stores text files with LF endings. Three test files went in as CRLF, which made a 153-line diff show as 381. The files this step adds are now normalised. `docs/architecture.md` has had CRLF since step #2 and gets fixed in the docs step, which edits it anyway.
 - The cache's temporary file carries the process id, so two runs fetching the same query can't share one scratch name.
 - `.python-version` pins 3.12, the version CI runs.
 - `_clean_review` no longer keeps the review text. No signal read it, and free text can name people.
 - The cache writes to a temporary file and renames it, so a crash can't leave broken JSON that every later run of that query would choke on.
-- 26 tests now.
+- 27 tests now.
 
 ## Changes to earlier steps
 
@@ -35,7 +35,7 @@ None to code. `SourceResult` differs from the shape first sketched for the team:
 - The `serpapi` package writes `api_key` into the dict it's given. The client passes it a copy and never stores that copy.
 - `.env` is read by a few lines in the client instead of `python-dotenv`, which would have been a fifth dependency.
 - Fixtures keep ratings, dates and likes, and leave out review text and the text of developer replies. Both can name people.
-- Each adapter has its own `signals()`, so the `signals/` folder listed in `docs/architecture.md` isn't needed. #4 is changing that file right now, so the tree gets fixed after #4 merges.
+- Each adapter has its own `signals()`, so the `signals/` folder listed in `docs/architecture.md` isn't needed. #4 was changing that file while this step ran, so the tree gets fixed in the docs step that follows.
 
 ## Known weaknesses
 
@@ -48,6 +48,6 @@ None to code. `SourceResult` differs from the shape first sketched for the team:
 
 ## Follow-ups
 
-- Write the 2026-09-22 data check into `docs/architecture.md` once #4 merges. All seven sources returned data for OYO and Atomberg. Maps means something different for each: OYO's results are its own hotels, while Atomberg's are dealers and multi-brand shops. A News search for "OYO IPO" included an unrelated article, so the News adapter needs a relevance filter.
-- Take `signals/` out of the tree in `docs/architecture.md` once #4 merges.
+- Write the 2026-09-22 data check into `docs/architecture.md`. All seven sources returned data for OYO and Atomberg. Maps means something different for each: OYO's results are its own hotels, while Atomberg's are dealers and multi-brand shops. A News search for "OYO IPO" included an unrelated article, so the News adapter needs a relevance filter.
+- Take `signals/` out of the tree in `docs/architecture.md`, and renormalise that file's line endings while it's open.
 - Candidates for the comparison set, from a live run on 2026-09-22: Atomberg's listing shows 4.3 while its newest 199 reviews average 3.76, with 20.6% at one star, and the developer replied to 1% of them. OYO's developer replied to 92.5% of its newest 40.

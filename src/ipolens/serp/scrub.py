@@ -30,8 +30,11 @@ PERSONAL_KEYS = {"avatar", "user", "author", "profile_link", "profile_picture", 
 
 EMAIL = re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+")
 # An Indian mobile number. The lookbehind keeps ids inside links and paths out of it, so
-# ".../id6446901002", ".../6446901002" and "?id=6446901002" all survive untouched.
-PHONE = re.compile(r"(?:\+?91[\s-]?)?(?<![\w/=.-])[6-9]\d{4}[\s-]?\d{5}(?![\w])")
+# ".../id6446901002", ".../6446901002" and "?id=6446901002" all survive untouched. It stops at
+# word characters, slashes and equals signs only: a number can follow a dot or a hyphen, as in
+# "Mob.9876543210" or "+91-9876543210". An id after a hyphen in a URL slug gets masked, which
+# costs nothing in a fixture.
+PHONE = re.compile(r"(?:\+?91[\s-]?)?(?<![\w/=])[6-9]\d{4}[\s-]?\d{5}(?![\w])")
 
 
 def scrub(data: Any, drop: dict[str, set[str]] | None = None) -> Any:
