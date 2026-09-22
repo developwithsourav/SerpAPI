@@ -1,0 +1,133 @@
+{
+ "search_parameters": {
+  "engine": "google_play",
+  "q": "Atomberg",
+  "hl": "en",
+  "gl": "in",
+  "store": "apps"
+ },
+ "organic_results": [
+  {
+   "items": [
+    {
+     "title": "Atomberg Home",
+     "link": "https://play.google.com/store/apps/details?id=com.atomberg.app",
+     "product_id": "com.atomberg.app",
+     "serpapi_link": "https://serpapi.com/search.json?engine=google_play_product&gl=in&hl=en&platform=phone&product_id=com.atomberg.app&sort_by=1&store=apps",
+     "rating": 4.3,
+     "category": "Lifestyle",
+     "downloads": "500,000+",
+     "thumbnail": "https://play-lh.googleusercontent.com/0riuPf23beY4_TluqTHmyTYzcjXCId8PZqg0LXl-KE9ohPz2zdzloceEXidZQXfDs8eLSMAd-V4y4eCz8nPw=s64",
+     "feature_image": "https://play-lh.googleusercontent.com/BprX3gKEX1_VtgFOtRrZS27BPH3_LY8MDx9UDqrH8-4cIIdAsV9JE18LSF5vdVIzojWYBSJbLuPD7wT1yUTGZA=w416-h235",
+     "description": "Use this app to add devices, control them using voice, BLE and Internet. Use this app to link Atomberg devices to Alexa and Google Assistant. Share access to devices with your family members through Home Management. Contact Atomberg Support from within app, for any help, guidance or feedback."
+    },
+    {
+     "title": "Atomberg",
+     "link": "https://play.google.com/store/apps/details?id=com.atomberg.atomberg",
+     "product_id": "com.atomberg.atomberg",
+     "serpapi_link": "https://serpapi.com/search.json?engine=google_play_product&gl=in&hl=en&platform=phone&product_id=com.atomberg.atomberg&sort_by=1&store=apps",
+     "rating": 2.4,
+     "category": "Business",
+     "downloads": "100,000+",
+     "thumbnail": "https://play-lh.googleusercontent.com/TnpzOGR5I-_XqsfmiC5fRawAA-lrIqi9LX4cRyFoC4TJvI4pDxWNLeMZdPHwNc5cAt830jU0fghSTTzYnFo9p6A=s64",
+     "feature_image": "https://play-lh.googleusercontent.com/7nWhXY7wL4TunlXuMKrtUugHFau36N5HALF-JXFl2QU2i-FSoSYq5DqlBixABuiRrfn10MYMYgYUTN7MeinM_A=w416-h235",
+     "description": "DISCLAIMER: THIS APP ONLY WORKS WITH THE RENESA SMART+ SERIES\n\nAtomberg Application enables users to:\n \n- Control their Atomberg Renesa Smart+ Fan from anywhere\n- Add and control multiple devices at once with one Application\n- Voice Control with Amazon Echo and Google Home\n- Enables users with features like Timer, Sleep, and Speed\n- Easily share devices among family members\nThis makes Atomberg fans a perfect combination of smartness, style and energy efficiency"
+    },
+    {
+     "title": "Atomberg BLDC Fan Remote",
+     "link": "https://play.google.com/store/apps/details?id=com.TheRMPApps.AtombergFanRemote",
+     "product_id": "com.TheRMPApps.AtombergFanRemote",
+     "serpapi_link": "https://serpapi.com/search.json?engine=google_play_product&gl=in&hl=en&platform=phone&product_id=com.TheRMPApps.AtombergFanRemote&sort_by=1&store=apps",
+     "rating": 3.2,
+     "category": "Tools",
+     "downloads": "100,000+",
+     "thumbnail": "https://play-lh.googleusercontent.com/c3q_NFacUAoHUPCPjGLSuR_z_c3xzRqi8nkApfLC_Z67KRXg8jvycgRkfjQQdp7LN2f65KnSXDMzSOg4kkmm=s64",
+     "feature_image": "https://play-lh.googleusercontent.com/MXwqdygWMKVT09k0MIj0TFpy0U_iKAH4l6sXPKznyLglGHAVfaaFSfyRl9x4r863VwV082DG7kEmbmyY2uK0=w416-h235",
+     "description": "Take control of your Atomberg fan anytime, anywhere with Atomberg Fan Remote – the unofficial smart fan controller app. Designed for simplicity and convenience, this app lets you manage your fan with just a few taps.\n\nFeatures:\n\nRemote ON/OFF: Turn your fan on or off from your phone.\n\nSpeed Control: Adjust fan speed levels easily.\n\nTimer & Scheduling: Automate your fan to save energy.\n\nEasy to Use: Clean, intuitive interface for quick control.\n\nLightweight: Minimal battery and storage usage.\n\nWide Compatibility: Works with most Atomberg ceiling fans.\n\nWhy Choose Atomberg Fan Remote?\n\nControl your fan without leaving your seat.\n\nCreate custom schedules to keep your home cool efficiently.\n\nLightweight and smooth experience on all Android devices.\n\n⚠️ Disclaimer: This is an unofficial app. It is not affiliated with or endorsed by Atomberg. All trademarks are the property of their respective owners.\n\nGet Atomberg Smart Fan Remote now and enjoy convenient, smart control of your fan from your phone."
+    },
+    {
+     "title": "Atomberg Service",
+     "link": "https://play.google.com/store/apps/details?id=com.atomberg.serviceapp",
+     "product_id": "com.atomberg.serviceapp",
+     "serpapi_link": "https://serpapi.com/search.json?engine=google_play_product&gl=in&hl=en&platform=phone&product_id=com.atomberg.serviceapp&sort_by=1&store=apps",
+     "category": "Productivity",
+     "downloads": "5,000+",
+     "thumbnail": "https://play-lh.googleusercontent.com/LfsUNyGm6p8bG9woYnvEnKZGLl2nuMza8tKBbUXRpiBFbEaPSdLYjql9mk0XUtGyAblDu6doJKtFW9YHH80sB8g=s64",
+     "feature_image": "https://play-lh.googleusercontent.com/ocWeUdfVvQe-7Mq-2JJf3zMjOVuSMi7VZy7vg5cOh_YeeYOslPHqCQeBAmvrLxNZpTRx1z9NW92CUTpnXwSUwTg=w416-h235",
+     "description": "The Atomberg Service App is a specialized tool designed exclusively for Atomberg’s field service technicians. It empowers service employees to efficiently manage installation, diagnostics, maintenance, and repair of Atomberg smart devices, including ceiling fans and other appliances."
+    },
+    {
+     "title": "Nova by Atomberg",
+     "link": "https://play.google.com/store/apps/details?id=com.nova.atomberg",
+     "product_id": "com.nova.atomberg",
+     "serpapi_link": "https://serpapi.com/search.json?engine=google_play_product&gl=in&hl=en&platform=phone&product_id=com.nova.atomberg&sort_by=1&store=apps",
+     "rating": 4.7,
+     "category": "Business",
+     "downloads": "1,000+",
+     "thumbnail": "https://play-lh.googleusercontent.com/Rz50-sGqfxMMi76mgyILw7VQirnvHlSND_zoOm0iu7d34A4C_Xee7zEscxg0YtQEZO1WNZvLYbh0ie9Cbxs_bRQ=s64",
+     "feature_image": "https://play-lh.googleusercontent.com/4U-CRMWEOKXbwiKn1b-5Mz9-Lm_ZckE3PTNYzin6NGMvfbtz4wypr3LrYD6rcxSIIc3Z1S5dcGH74F62Pmfn=w416-h235",
+     "description": "Atomberg’s digital-first incentive and engagement platform drives sales and loyalty among Shop Boys and Electricians through real-time onboarding, target assignment, bill tracking, fraud control, and gamification. Powered by Nova, it enables faster adoption, accurate payouts, and optimized market coverage, transforming users into motivated brand ambassadors.\n\nUse the app to\n- Register: complete your KYC to register\n- Send Claims: Report your sales by either uploading sales invoice or scanning QR codes\n- Earn points: for each successful claim\n- Gamification: take part in various schemes and contests to earn points\n- Reward: Get rewarded by direct cash transfer to your bank account"
+    },
+    {
+     "title": "Synergy by Atomberg",
+     "link": "https://play.google.com/store/apps/details?id=com.botree.retail.atomberg",
+     "product_id": "com.botree.retail.atomberg",
+     "serpapi_link": "https://serpapi.com/search.json?engine=google_play_product&gl=in&hl=en&platform=phone&product_id=com.botree.retail.atomberg&sort_by=1&store=apps",
+     "rating": 4.0,
+     "category": "Business",
+     "downloads": "5,000+",
+     "thumbnail": "https://play-lh.googleusercontent.com/ieomzLMTdDgkWAzumVZeJE8RkNSWA00zl2yoj1uDa0IMAXKdSUQQtvRQAcowOGnULpPXsgel3ActiugOUCey=s64",
+     "feature_image": "https://play-lh.googleusercontent.com/bd2cnEeCirt85HE7cQ9DKYY3z79ikP4-QJF_An2vArKu-kie9DS4bx85ZMJhkOm2aVvx6Qo-fzcDVUvRgyPWFg=w416-h235",
+     "description": "Synergy: The Retailer App \n\n \n\nSynergy is an easy-to-use app designed to connect retailers with the world of Atomberg. It helps retailers manage their daily tasks quickly and efficiently, all in one place. \n\n \n\nWhat Synergy Offers: \n\nSimple Onboarding: Easily set up accounts with quick KYC and profiling for new and existing retailers. \nOrder Management: Now place sales orders and track progress anytime, anywhere. \nFinancial Access: View account statements and ledgers to keep track of all transactions. \nBusiness Resources: Access product details, price lists, scheme letters, and promotional content, including videos, seamlessly. \nSupport System: Report and resolve issues quickly with a dedicated support feature. \n \n\nBenefits of Using Synergy: \n\nStreamlines everyday tasks like orders and payments. \nKeeps all important information in one app. \nMakes communication with the company simple and effective. \nHelps you focus on growing your business. \n \n\nSynergy is designed to make retail management simple, better, and effective. \n\n \n\nDownload Synergy now!"
+    },
+    {
+     "title": "Atomberg Fan Remote",
+     "link": "https://play.google.com/store/apps/details?id=com.sairatnakar.atomberg_fan_remote",
+     "product_id": "com.sairatnakar.atomberg_fan_remote",
+     "serpapi_link": "https://serpapi.com/search.json?engine=google_play_product&gl=in&hl=en&platform=phone&product_id=com.sairatnakar.atomberg_fan_remote&sort_by=1&store=apps",
+     "rating": 4.3,
+     "category": "Tools",
+     "downloads": "100,000+",
+     "thumbnail": "https://play-lh.googleusercontent.com/uvjDHVFHaPBdcsxRMHc2_To4G3M8XKW8wxaeCAEToU4A12UtDzzZwbd9SumKUOTIBJOdt14ZR8t3zBaPrRsL=s64",
+     "feature_image": "https://play-lh.googleusercontent.com/maGnb9LJQiJ4ct6QCjUozpVh3m3KyodYkO-fQg1I_Z10DwgXpdQ-A1nc5WX8pYCGJiKektJaeISHFFhSZIqzKsM=w416-h235",
+     "description": "This application serves as a remote control for Atomberg Fans, leveraging the mobile IR blaster to transmit signals to the fan's receiver. Through the app, users can conveniently adjust fan settings, including speed and mode, using their mobile devices. The seamless integration of the mobile IR blaster ensures a reliable and responsive connection between the app and the Atomberg Fan, providing users with an enhanced and user-friendly experience in managing their cooling preferences."
+    },
+    {
+     "title": "Atomberg Empower Mobcast",
+     "link": "https://play.google.com/store/apps/details?id=in.mobcast.atomberg",
+     "product_id": "in.mobcast.atomberg",
+     "serpapi_link": "https://serpapi.com/search.json?engine=google_play_product&gl=in&hl=en&platform=phone&product_id=in.mobcast.atomberg&sort_by=1&store=apps",
+     "rating": 4.6,
+     "category": "Productivity",
+     "downloads": "1,000+",
+     "thumbnail": "https://play-lh.googleusercontent.com/XhID-iIVD5HwkBEjp0GDJe__hmyzPo8-xKRLZ6N-jETuQ13LDA9yaBdgzCI6zkd_JWOubA0tPBps-plWJzRJ2I8=s64",
+     "feature_image": "https://play-lh.googleusercontent.com/BlYfwVZAwneIxb0jN1HZXaeshzoePcfgyHIv9YWCNlKZ_9td5lkpQ4-fiSYT2WkKrmz8pYZTLVPI22Blg1jvMA=w416-h235",
+     "description": "Atomberg Empower is a platform that helps Atomberg members to Enhance their knowledge of products, process, soft skills etc. Platform also empowers members to use it as a knowledge repository and a single source of information. It supports in creating awareness to members through broadcasting new products, organizational announcements, branding activities etc."
+    },
+    {
+     "title": "Remote for Atomberg Fans",
+     "link": "https://play.google.com/store/apps/details?id=com.KKSmartApps.irapp2",
+     "product_id": "com.KKSmartApps.irapp2",
+     "serpapi_link": "https://serpapi.com/search.json?engine=google_play_product&gl=in&hl=en&platform=phone&product_id=com.KKSmartApps.irapp2&sort_by=1&store=apps",
+     "rating": 4.2,
+     "category": "Tools",
+     "downloads": "5,000+",
+     "thumbnail": "https://play-lh.googleusercontent.com/R1wcb4bBshImnLu0auZ5OyveHglw05ajKxOmZ-tREExvF48BPaOhvGX4j-fHPZJuRY4_pLpBdN_KB-JOAy6RLQ=s64",
+     "feature_image": "https://play-lh.googleusercontent.com/ye1KpF448f4cgmwNHXPf4ssEB5M9e-QaizzO4TXe5Eb9h-MxUq3MyVyUO_3Q6yJTn3Xm7OQZ6ig78FMFB7MK=w416-h235",
+     "description": "This is an Infrared (IR) remote for Atomberg ceiling fans.\n\nTested and works with - \n- Ceiling fans\n- Pedestal fans\n- Wall mount fans\n\n🔌 No need to connect or pair etc – just install and use! It will work exactly like the physical remote.\n🎨 Better UI compared to generic universal remote apps.\n🪫 No need to buy the physical remote or change the batteries etc!\n📱 If you are able to see this app on Play Store – your phone already has the IR and the remote will work!\n\nDisclaimer:\n⚠️ This app is NOT from Atomberg Technologies Pvt. Ltd. It is NOT affiliated with, endorsed by, or sponsored by Atomberg Technologies Pvt. Ltd.\n⚠️ All trademarks and brand names are the property of their respective owners."
+    },
+    {
+     "title": "Atomberg Fan Remote & Widgets",
+     "link": "https://play.google.com/store/apps/details?id=com.atomberg.remote",
+     "product_id": "com.atomberg.remote",
+     "serpapi_link": "https://serpapi.com/search.json?engine=google_play_product&gl=in&hl=en&platform=phone&product_id=com.atomberg.remote&sort_by=1&store=apps",
+     "category": "Tools",
+     "downloads": "100+",
+     "thumbnail": "https://play-lh.googleusercontent.com/UOOS8PlFmj1AB-nd0WxEEnRRH7bO184lZjdHQ8fSdB18xH-RlbMjQaczVqDumtvZwXhNmOOMu1Bx_AZOKBM0YA=s64",
+     "feature_image": "https://play-lh.googleusercontent.com/BB_XBi6Ud87W8SqPSOiHAX1flGxwzrjs9SHBo2FYkoVFAaN9aod1VN9o5wgTv73UF9wWzxvtUJVreTxHlpTo-BU=w416-h235",
+     "description": "Lost your Atomberg remote? Broken controller or dead batteries? \n\nControl your Atomberg ceiling, pedestal, and wall fans instantly using your smartphone’s built-in IR (Infrared) blaster! \n\nAtomberg Fan Remote is a fast, hyper-realistic, and beautifully crafted remote controller app designed specifically for Atomberg BLDC fans. Experience instant response with zero pairing, authentic tactile haptic feedback, and interactive Home Screen Widgets that let you change fan speeds without even opening the app!\n\n==================================\n⚡ WHY CHOOSE ATOMBERG FAN REMOTE?\n==================================\n\n📱 EXCLUSIVE HOME SCREEN WIDGETS\nControl your fan right from your Android home screen! Choose from multiple clean widget sizes (2x2, 3x2, 2x3, 3x3) to power on/off, change speeds, trigger boost, or set timers with a single tap.\n\n🚀 INSTANT PLUG & PLAY — ZERO PAIRING\nNo Wi-Fi, Bluetooth, or complex account setup required. Just point your phone’s IR blaster at the fan and press any button — it works exactly like the original physical remote.\n\n🎛️ COMPLETE REMOTE CONTROL COMMANDS\n• Power: Turn your fan ON or OFF with a single tap.\n• Speed 1 to 6: Direct one-touch buttons for every speed setting.\n• BOOST Mode: Activate maximum RPM and peak airflow instantly.\n• SLEEP Mode: Comfortably graduate speed downward throughout the night.\n• TIMER Mode: Set automated 1-hour, 2-hour, 3-hour, or 6-hour sleep timers to save electricity.\n• OSCILLATION / SWING: Toggle smooth oscillation for Atomberg Pedestal and Wall fans.\n• LED LIGHT: Instant light on/off toggle for Atomberg Studio and light-equipped fans.\n\n✨ PREMIUM TACTILE & VISUAL EXPERIENCE\n• Haptic Vibrations: Realistic tactile feedback with every button press.\n• Animated Speed Visualizer: Live rotating fan blades reflect your exact speed in real time.\n• Modern Ergonomic Design: High-contrast buttons tailored for effortless one-handed use in low-light bedrooms.\n\n==================================\n🌬️ SUPPORTED ATOMBERG FAN MODELS\n==================================\n\nCompatible with all Atomberg BLDC motor fans featuring infrared receivers:\n• Atomberg Renesa & Renesa+ (1200mm, 900mm, 600mm)\n• Atomberg Efficio & Efficio+\n• Atomberg Studio & Studio+ (including LED light models)\n• Atomberg Aris & Aris Starlight\n• Atomberg Pedestal Fans (with Oscillation & Swing control)\n• Atomberg Wall Mount Fans\n• Atomberg Gorilla BLDC series\n\n==================================\n🔧 HOW TO USE\n==================================\n\n1. Ensure your Android smartphone has a built-in IR Blaster (Infrared sensor).\n2. Open Atomberg Fan Remote.\n3. Point your phone toward your Atomberg fan sensor.\n4. Tap Power or any Speed button (1-6) to control your fan immediately!\n\n==================================\n📡 DEVICE REQUIREMENTS\n==================================\n\n⚠️ IMPORTANT HARDWARE NOTICE:\nThis application operates exclusively via Infrared (IR). Your smartphone MUST have a built-in IR Blaster (hardware sensor). \nSupported phone brands include:\n• Xiaomi / Redmi / POCO (all models with IR)\n• Vivo / iQOO (models with IR)\n• Oppo / Realme (models with IR)\n• Huawei / Honor\n• Older Samsung Galaxy and HTC models with IR emitters\n\nIf your smartphone does not have an IR emitter sensor, the app will notify you upon launch.\n\n==================================\n⚖️ DISCLAIMER\n==================================\n\nThis application is an independent utility developed for users who have lost or damaged their physical fan remote. This app is NOT an official application of Atomberg Technologies Pvt. Ltd., and is neither affiliated with, sponsored by, nor endorsed by Atomberg Technologies Pvt. Ltd. All trademarks, model names, and registered logos are property of their respective owners."
+    }
+   ]
+  }
+ ]
+}

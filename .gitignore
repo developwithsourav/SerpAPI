@@ -29,3 +29,4 @@ docs/handoffs/
 Thumbs.db
 .idea/
 .vscode/
+.mcp.json
