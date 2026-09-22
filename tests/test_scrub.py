@@ -47,11 +47,23 @@ def test_leaves_ordinary_numbers_alone():
     assert scrub(data) == data
 
 
+def test_masks_text_that_also_holds_a_link():
+    text = "Call 9876543210 or mail a.person@example.com, details at https://example.com/help"
+
+    cleaned = scrub({"snippet": text})
+
+    assert cleaned == {
+        "snippet": "Call [phone] or mail [email], details at https://example.com/help"
+    }
+
+
 def test_leaves_app_store_ids_and_links_alone():
     data = {
         "link": "https://apps.apple.com/in/app/oyo/id6446901002",
         "product_id": "6446901002",
         "id": "id9876543210",
+        "query": "https://apps.apple.com/in/app?id=6446901002",
+        "path": "https://apps.apple.com/in/app/6446901002",
     }
 
     assert scrub(data) == data

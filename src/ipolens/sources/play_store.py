@@ -70,6 +70,8 @@ def fetch(company: str, client: SerpClient, product_id: str | None = None) -> So
 
 
 def _notes(company: str, data: dict[str, Any], app: dict[str, Any]) -> list[str]:
+    if not app.get("title"):  # a pinned product_id that the search didn't return
+        return [f"Read the pinned app {app['product_id']}, which the search didn't return."]
     notes = [f'Matched the app "{app.get("title")}" ({app["product_id"]}).']
     others = _other_matches(company, data, app)
     if others:

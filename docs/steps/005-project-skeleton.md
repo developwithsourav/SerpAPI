@@ -16,10 +16,14 @@
 
 - `Signal` now has a stable `key`, such as `play_store.one_star_share`, and keeps `name` for the screen. Names carry the review count ("newest 40" for OYO, "newest 199" for Atomberg), so comparisons would have been matching on text that shifts between companies.
 - The app name now has to match as a whole word, so "OYO" no longer matches "Toyota Connect". A word match can't fix a name that is an ordinary word, so `fetch()` takes an optional `product_id` that pins the app, and a claims file can hold it. The result also lists the other apps whose titles hold the name: Atomberg has nine.
-- The phone mask no longer touches links or strings that are only digits, so an App Store id such as `6446901002` survives. Fixing it now, before the App Store adapter records its fixture.
+- The phone mask leaves strings that are only digits alone, so an App Store id such as `6446901002` survives. Fixing it now, before the App Store adapter records its fixture. The first attempt skipped any string holding a link, which would have left phone numbers and emails in every sentence that ends with a link, and the demo snapshot runs through this code. Sourav caught it. The lookbehind is what protects ids inside links, and a test now covers text with a link in it.
+- A pinned `product_id` the search didn't return says so in the note, instead of reading `Matched the app "None"`.
+- `.gitattributes` stores text files with LF endings. Three test files went in as CRLF, which made a 153-line diff show as 381. The files this step adds are now normalised. `docs/architecture.md` has had CRLF since step #2 and gets fixed in the docs step, which edits it anyway.
+- The cache's temporary file carries the process id, so two runs fetching the same query can't share one scratch name.
 - `.python-version` pins 3.12, the version CI runs.
 - `_clean_review` no longer keeps the review text. No signal read it, and free text can name people.
 - The cache writes to a temporary file and renames it, so a crash can't leave broken JSON that every later run of that query would choke on.
+- 26 tests now.
 
 ## Changes to earlier steps
 

@@ -44,6 +44,19 @@ def test_a_pinned_product_id_wins_over_the_search():
     assert app["product_id"] == "com.oyo.consumerlite"
 
 
+def test_a_pinned_app_the_search_did_not_return_says_so(client_with):
+    def answer(query):
+        if query["engine"] == "google_play":
+            return {"organic_results": []}
+        return {"reviews": []}
+
+    client, _ = client_with(answer)
+
+    result = play_store.fetch("boAt", client, product_id="com.boat.real")
+
+    assert result.notes == ["Read the pinned app com.boat.real, which the search didn't return."]
+
+
 def test_other_apps_with_the_same_name_are_listed_in_the_notes(client_with):
     client, _ = client_with(answer_from_fixtures)
 
