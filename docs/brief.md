@@ -126,7 +126,7 @@ Tick these off as they are met.
 - [ ] Track selected: Commerce & Market Intelligence
 - [ ] The tools disclosure for the form is written
 - [ ] "Project existed before the hackathon" is left unticked, since it didn't
-- [ ] All five team members meet the eligibility rules and are listed
+- [ ] All four team members meet the eligibility rules, have contributed, and are listed
 - [ ] "Submit project" selected before 5 Oct 2026, 23:59 IST
 
 ## Ambiguities to raise

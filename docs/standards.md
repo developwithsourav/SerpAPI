@@ -2,7 +2,7 @@
 
 ## Principles
 
-Adapted from [webpro/programming-principles](https://github.com/webpro/programming-principles), picked for five people working in parallel for two weeks.
+Adapted from [webpro/programming-principles](https://github.com/webpro/programming-principles), picked for four people working in parallel for two weeks.
 
 **We follow:**
 - **Simplest thing that works (KISS).** Choose the plainest solution that meets the step's goal.

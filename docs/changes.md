@@ -33,3 +33,9 @@ Project-level decisions and the reasons behind them. Step-level detail lives in 
 - Peers roughly triple the searches per brief, from about 15 to about 45, so the cache carries more of the load.
 - Divyansh takes the project skeleton, with the Play Store adapter as the reference the others copy. Sourav reviews that PR, and Divyansh reviews #4.
 - boAt's data gets captured before its IPO is expected to open on 27 Sep. Every signal shows when it was fetched, so a demo run from the cache still states the date of its data.
+
+## 2026-09-23
+
+- Manish has left the team, so there are four of us: Sourav, Avi, Anay and Divyansh. The work plan hands his parts to the other four, and the review circle is now Divyansh → Sourav → Avi → Anay → Divyansh.
+- The submission form lists only people who contributed to the project. The Rules require that of every listed member, and a false team claim is grounds for disqualification.
+- Four free SerpApi accounts give 1,000 searches a month instead of 1,250.
