@@ -12,6 +12,7 @@ shows on the listing, averaged over every rating the app has ever had. The
 newest reviews show what people are saying right now.
 """
 
+import re
 from collections import Counter
 from typing import Any
 
@@ -23,9 +24,14 @@ NEWEST = 199  # the most reviews SerpApi returns in one request
 INDIA = {"gl": "in", "hl": "en", "store": "apps"}
 
 
-def fetch(company: str, client: SerpClient) -> SourceResult:
+def fetch(company: str, client: SerpClient, product_id: str | None = None) -> SourceResult:
+    """Read the newest reviews of the company's app.
+
+    product_id pins which app to read, for a company whose name matches other
+    apps. A claims file can hold that id.
+    """
     found = client.search("google_play", {"q": company, **INDIA})
-    app = _match_app(company, found.data)
+    app = _match_app(company, found.data, product_id)
     if app is None:
         return SourceResult(
             source=SOURCE,
@@ -59,15 +65,24 @@ def fetch(company: str, client: SerpClient) -> SourceResult:
             "headline_rating_count": app.get("reviews"),
             "downloads": app.get("downloads"),
         },
-        notes=[f'Matched the app "{app.get("title")}" ({app["product_id"]}).'],
+        notes=_notes(company, found.data, app),
     )
 
 
+def _notes(company: str, data: dict[str, Any], app: dict[str, Any]) -> list[str]:
+    notes = [f'Matched the app "{app.get("title")}" ({app["product_id"]}).']
+    others = _other_matches(company, data, app)
+    if others:
+        notes.append("Other apps with the same name in their title: " + ", ".join(others) + ".")
+    return notes
+
+
 def signals(result: SourceResult) -> list[Signal]:
-    def signal(name: str, value: float | str | None, unit: str, method: str) -> Signal:
+    def signal(key: str, name: str, value: float | str | None, unit: str, method: str) -> Signal:
         return Signal(
             source=SOURCE,
             company=result.company,
+            key=f"{SOURCE}.{key}",
             name=name,
             value=value,
             unit=unit,
@@ -91,6 +106,7 @@ def signals(result: SourceResult) -> list[Signal]:
 
     return [
         signal(
+            "headline_rating",
             "Headline rating on the listing",
             headline,
             "stars",
@@ -99,30 +115,35 @@ def signals(result: SourceResult) -> list[Signal]:
             "It moves slowly, so it says little about recent experience.",
         ),
         signal(
+            "newest_average_rating",
             f"Average rating, newest {n} reviews",
             round(sum(ratings) / n, 2) if n else None,
             "stars",
             f"The mean star rating of {newest}. {caveat}",
         ),
         signal(
+            "one_star_share",
             f"1-star share, newest {n} reviews",
             round(100 * stars[1] / n, 1) if n else None,
             "%",
             f"The share of {newest} that gave 1 star. {caveat}",
         ),
         signal(
+            "five_star_share",
             f"5-star share, newest {n} reviews",
             round(100 * stars[5] / n, 1) if n else None,
             "%",
             f"The share of {newest} that gave 5 stars. {caveat}",
         ),
         signal(
+            "star_split",
             f"Star split, newest {n} reviews",
             " · ".join(f"{s}★ {stars[s]}" for s in range(5, 0, -1)) if n else None,
             "",
             f"How many of {newest} gave each number of stars.",
         ),
         signal(
+            "developer_reply_share",
             f"Developer replies, newest {n} reviews",
             round(100 * replied / n, 1) if n else None,
             "%",
@@ -131,28 +152,60 @@ def signals(result: SourceResult) -> list[Signal]:
     ]
 
 
-def _match_app(company: str, data: dict[str, Any]) -> dict[str, Any] | None:
-    """The first app whose title contains the company name.
+def _match_app(
+    company: str, data: dict[str, Any], product_id: str | None = None
+) -> dict[str, Any] | None:
+    """Pick the company's app out of the results.
 
     Google puts its best match in "app_highlight" (OYO's app lands there) and the
     rest in "organic_results" (Atomberg's does), so look in both, in that order.
+
+    The name has to match as a whole word, so "OYO" doesn't match "Toyota
+    Connect". A word match can still pick the wrong app when the name is an
+    ordinary word, as "boAt" would match a game called "Boat Simulator", so
+    product_id pins the right one when we know it.
     """
-    highlight = data.get("app_highlight") or {}
-    candidates = [highlight] + [
+    candidates = [data.get("app_highlight") or {}] + [
         item for group in data.get("organic_results", []) for item in group.get("items", [])
     ]
-    for app in candidates:
-        if app.get("product_id") and company.lower() in str(app.get("title", "")).lower():
-            return app
-    return None
+    if product_id:
+        pinned = next((a for a in candidates if a.get("product_id") == product_id), None)
+        return pinned or {"product_id": product_id}
+    matches = [a for a in candidates if a.get("product_id") and _is_same_name(company, a)]
+    return matches[0] if matches else None
+
+
+def _is_same_name(company: str, app: dict[str, Any]) -> bool:
+    return (
+        re.search(rf"\b{re.escape(company)}\b", str(app.get("title", "")), re.IGNORECASE)
+        is not None
+    )
+
+
+def _other_matches(company: str, data: dict[str, Any], chosen: dict[str, Any]) -> list[str]:
+    """Other apps whose title also holds the name, so a wrong pick is visible."""
+    candidates = [data.get("app_highlight") or {}] + [
+        item for group in data.get("organic_results", []) for item in group.get("items", [])
+    ]
+    return [
+        f"{a.get('title')} ({a['product_id']})"
+        for a in candidates
+        if a.get("product_id")
+        and a["product_id"] != chosen.get("product_id")
+        and _is_same_name(company, a)
+    ]
 
 
 def _clean_review(review: dict[str, Any]) -> dict[str, Any]:
-    """Keep what the signals need. The reviewer's name, avatar and review id are left out."""
+    """Keep what the signals need.
+
+    The reviewer's name, avatar and review id are left out, and so is the review
+    text: no signal reads it, and free text can name people. A later step that
+    needs it can add it back.
+    """
     return {
         "rating": review.get("rating"),
         "date": review.get("iso_date"),
-        "text": review.get("snippet"),
         "likes": review.get("likes"),
         "developer_replied": bool(review.get("response")),
     }

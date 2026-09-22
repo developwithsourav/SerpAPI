@@ -45,3 +45,13 @@ def test_leaves_ordinary_numbers_alone():
     data = {"rating": 4.5, "reviews": 2000000, "product_id": "1575323645", "date": "2026-09-20"}
 
     assert scrub(data) == data
+
+
+def test_leaves_app_store_ids_and_links_alone():
+    data = {
+        "link": "https://apps.apple.com/in/app/oyo/id6446901002",
+        "product_id": "6446901002",
+        "id": "id9876543210",
+    }
+
+    assert scrub(data) == data

@@ -44,8 +44,16 @@ class Signal(BaseModel):
 
     source: str
     company: str
+
+    key: str
+    """A stable id, e.g. "play_store.one_star_share".
+
+    Comparisons find signals by key, so it never changes and never mentions a
+    count, a date or anything else that shifts between companies.
+    """
+
     name: str
-    """e.g. "1-star share, newest 199 reviews"."""
+    """What the screen shows, e.g. "1-star share, newest 199 reviews"."""
 
     value: float | str | None
     """None means the data wasn't available. Never use 0 for that."""

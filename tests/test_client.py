@@ -47,6 +47,15 @@ def test_key_never_reaches_saved_params_or_cache(client_with, tmp_path):
     assert "SECRET-KEY" not in saved
 
 
+def test_cache_write_leaves_no_half_written_file(client_with, tmp_path):
+    client, _ = client_with(answer_ok)
+
+    client.search("google", {"q": "OYO"})
+
+    assert list((tmp_path / "cache").rglob("*.part")) == []
+    assert len(list((tmp_path / "cache").rglob("*.json"))) == 1
+
+
 def test_api_key_in_params_is_refused(client_with):
     client, _ = client_with(answer_ok)
 

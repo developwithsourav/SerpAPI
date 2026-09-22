@@ -12,6 +12,15 @@
 - Added `src/ipolens/sources/play_store.py`, the adapter the others copy. It finds the company's app for India, reads the newest 199 reviews, and gives six signals: the headline rating, the recent average, the 1-star and 5-star shares, the star split and the share of reviews the developer replied to.
 - Added 19 tests on scrubbed OYO and Atomberg answers. None of them needs a key or the network.
 
+## From Sourav's review
+
+- `Signal` now has a stable `key`, such as `play_store.one_star_share`, and keeps `name` for the screen. Names carry the review count ("newest 40" for OYO, "newest 199" for Atomberg), so comparisons would have been matching on text that shifts between companies.
+- The app name now has to match as a whole word, so "OYO" no longer matches "Toyota Connect". A word match can't fix a name that is an ordinary word, so `fetch()` takes an optional `product_id` that pins the app, and a claims file can hold it. The result also lists the other apps whose titles hold the name: Atomberg has nine.
+- The phone mask no longer touches links or strings that are only digits, so an App Store id such as `6446901002` survives. Fixing it now, before the App Store adapter records its fixture.
+- `.python-version` pins 3.12, the version CI runs.
+- `_clean_review` no longer keeps the review text. No signal read it, and free text can name people.
+- The cache writes to a temporary file and renames it, so a crash can't leave broken JSON that every later run of that query would choke on.
+
 ## Changes to earlier steps
 
 None to code. `SourceResult` differs from the shape first sketched for the team: `params` became `queries`, a list, because one adapter can make several requests, and a new `details` field holds facts about the source as a whole, such as which app matched.
@@ -28,7 +37,7 @@ None to code. `SourceResult` differs from the shape first sketched for the team:
 
 - The phone mask only knows Indian mobile numbers, and names inside review text aren't detected. That's why fixtures leave review text out.
 - The newest 199 reviews covered about one day for OYO and five weeks for Atomberg, so the window varies a lot from company to company. Every method text states the window it used.
-- The adapter picks the first app whose title contains the company name. That was right for OYO and Atomberg, but a brand named after a common word could match the wrong app. The note on each result says which app matched.
+- The adapter picks the first app whose title holds the company name as a whole word. That was right for OYO and Atomberg, but a brand named after an ordinary word, such as boAt, could still match something else. Pin it with `product_id` from the claims file, and read the note on each result, which names the app that matched and any others with the same name.
 - A Windows terminal can't print ★ unless `PYTHONIOENCODING=utf-8` is set, so printing the star split there fails. The app screen isn't affected.
 - If anyone turns on DEBUG logging, `urllib3`, which `serpapi` uses underneath, logs full request URLs, key included. Leave logging at its default level.
 - `cache/` keeps raw answers, reviewer names included. Anything built from it that gets committed, such as the demo snapshot, has to go through `scrub` first.

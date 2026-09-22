@@ -29,7 +29,9 @@ from typing import Any
 PERSONAL_KEYS = {"avatar", "user", "author", "profile_link", "profile_picture", "contributor_id"}
 
 EMAIL = re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+")
-PHONE = re.compile(r"(?:\+?91[\s-]?)?(?<!\d)[6-9]\d{4}[\s-]?\d{5}(?!\d)")
+# An Indian mobile number, with nothing but punctuation or space in front of it. Without that
+# guard, an App Store link like ".../id6446901002" would come out as ".../id[phone]".
+PHONE = re.compile(r"(?:\+?91[\s-]?)?(?<![\w/])[6-9]\d{4}[\s-]?\d{5}(?![\w])")
 
 
 def scrub(data: Any, drop: dict[str, set[str]] | None = None) -> Any:
@@ -52,6 +54,10 @@ def scrub(data: Any, drop: dict[str, set[str]] | None = None) -> Any:
     if isinstance(data, list):
         return [scrub(item, drop) for item in data]
     if isinstance(data, str):
+        # A link or a bare number is an id, not something a person wrote. Without this,
+        # an App Store id such as "6446901002" would come out as "[phone]".
+        if "://" in data or data.strip().isdigit():
+            return data
         return PHONE.sub("[phone]", EMAIL.sub("[email]", data))
     return data
 

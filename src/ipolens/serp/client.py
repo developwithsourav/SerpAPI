@@ -101,7 +101,11 @@ class SerpClient:
 
         path.parent.mkdir(parents=True, exist_ok=True)
         record = {"params": query, "fetched_at": fetched_at.isoformat(), "data": data}
-        path.write_text(json.dumps(record, ensure_ascii=False, indent=1), encoding="utf-8")
+        # Write beside the file and rename, so a crash can't leave half-written JSON that
+        # every later run of this query would choke on.
+        scratch = path.with_suffix(".part")
+        scratch.write_text(json.dumps(record, ensure_ascii=False, indent=1), encoding="utf-8")
+        os.replace(scratch, path)
         return SerpResponse(engine, query, data, fetched_at, from_cache=False)
 
     def _cache_path(self, query: dict[str, str]) -> Path:
